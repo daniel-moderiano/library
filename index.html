@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link rel="stylesheet" href="styles/reset.css">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+    <main class="main">
+        <header class="header">
+            <h1 class=main-title>Library</h1>
+        </header>
+        <div class="library-container">
+            <!-- Consider a grid of book "cards" here -->
+        </div>
+
+        <div class="button-container">
+            <button class="button--new">Add New Book</button>
+        </div>
+
+        <div class="modal">
+            <div class="form-container">
+                <div class="form__header">
+                    <h2 class="form__title">New Book</h2>
+                    <span class="form__close">&times;</span>
+                </div>
+                <form class="form">
+                    <ul>
+                        <li class="form__item">
+                            <label class="form__label" for="title">Title</label>
+                            <input class="form__input" type="text" id="title" name="title">
+                        </li>
+                        <li class="form__item">
+                            <label class="form__label" for="author">Author</label>
+                            <input class="form__input" type="text" id="author" name="author">
+                        </li>
+                        <li class="form__item">
+                            <label class="form__label" for="pages">Number of pages</label>
+                            <input class="form__input" type="text" id="pages" name="pages">
+                        </li>
+                        <li class="form__item">
+                            <label class="form__label" for="read">Have you read it?</label>
+                            <input type="checkbox" id="read" name="read" value="false">
+                        </li>
+                        <button class="form__button" type="submit">Submit</button>
+                    </ul>               
+                </form>
+
+            </div>
+        </div>
+
+    </main>
+ 
+
+
+    <script type="text/javascript" src="scripts/main.js"></script>
+</body>
+</html>
