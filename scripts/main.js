@@ -17,19 +17,22 @@ function addBookToLibrary() {
 const modal = document.querySelector(".modal");
 const newBook = document.querySelector(".button--new");
 const closeBtn = document.querySelector(".form__close");
+const submitBtn = document.querySelector(".form__submit");
+const titleInput = document.querySelector(".form__input--title");
+const authorInput = document.querySelector(".form__input--author");
+const pagesInput = document.querySelector(".form__input--pages");
+const checkYes = document.querySelector(".form__input--checkYes");
+const checkNo = document.querySelector(".form__input--checkNo");
+
+
+const formInputs = document.querySelectorAll(".form__input");
 
 // Listen for click on new book button, and activate function to display modal
-function openModal() {
-    modal.style.display = "block";
-}
-
+openModal = () => modal.style.display = "block";
 newBook.addEventListener("click", openModal);
 
 // Listen for click on close button, and activate function to hide modal
-function closeModal() {
-    modal.style.display = "none";
-}
-
+closeModal = () => modal.style.display = "none";
 closeBtn.addEventListener("click", closeModal)
 
 // Listen for click on window, and if not the modal content, then close modal (i.e. close modal if clicking on screen outside modal)
@@ -40,4 +43,14 @@ function clickOutside(e) {
 }
 
 window.addEventListener("click", clickOutside);
+
+// On click of submit button, gather all values from the input fields 
+
+// submitBtn.addEventListener("click", gatherInputs);
+
+function gatherInputs(inputList) {
+    inputList.forEach(function(input) {
+        console.log(input.checked);
+    });
+}
 

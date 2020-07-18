@@ -31,7 +31,7 @@ body {
 }
 
 .modal {
-    /* display: none; */
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -92,7 +92,7 @@ body {
     width: 15rem;
 }
 
-.form__button {
+.form__submit {
     margin-top: 0.5rem;
 }
 
