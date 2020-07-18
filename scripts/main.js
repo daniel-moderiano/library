@@ -21,7 +21,7 @@ function addBookToLibrary() {
 // Initialise all document variables here
 
 const modal = document.querySelector(".modal");
-const newBook = document.querySelector(".button--new");
+const addNewBook = document.querySelector(".button--new");
 const closeBtn = document.querySelector(".form__close");
 const submitBtn = document.querySelector(".form__submit");
 const titleInput = document.querySelector(".form__input--title");
@@ -32,10 +32,12 @@ const checkNo = document.querySelector(".form__radio--notRead");
 const formInputFields = document.querySelectorAll(".form__input");
 const formInputRadios = document.querySelectorAll(".form__radio");
 const form = document.querySelector(".form");
+const book = document.querySelector(".book");
+const bookshelf = document. querySelector('.library-container');
 
 // Listen for click on new book button, and activate function to display modal
 openModal = () => modal.style.display = "block";
-newBook.addEventListener("click", openModal);
+addNewBook.addEventListener("click", openModal);
 
 // Listen for click on close button, and activate function to hide modal
 closeModal = () => modal.style.display = "none";
@@ -50,13 +52,26 @@ function clickOutside(e) {
 
 window.addEventListener("click", clickOutside);
 
-// On click of submit button, call function to take user input and create new book object, then add this to library array
+// Function to take render the library array as HTML items (individual books)
 
-// submitBtn.addEventListener("click", addBookToLibrary);
+function render() {
+    let parent = book;
+    let children = book.childNodes;
+    let newBook = book.cloneNode();
+    children.forEach(function(child) {
+        let childClone = child.cloneNode();
+        newBook.appendChild(childClone);
+    })
+    bookshelf.appendChild(newBook);
+}
+
+// On click of submit button, call function to take user input and create new book object, then add this to library array
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
     addBookToLibrary();
     closeModal();
+    render();
 })
+
 
