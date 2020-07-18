@@ -30,19 +30,26 @@
                     <ul>
                         <li class="form__item">
                             <label class="form__label" for="title">Title</label>
-                            <input class="form__input" type="text" id="title" name="title">
+                            <input id="title-input" required placeholder="Enter the book title" class="form__input" type="text" id="title" name="title">
                         </li>
                         <li class="form__item">
                             <label class="form__label" for="author">Author</label>
-                            <input class="form__input" type="text" id="author" name="author">
+                            <input required placeholder="Enter the author" class="form__input" type="text" id="author" name="author">
                         </li>
                         <li class="form__item">
                             <label class="form__label" for="pages">Number of pages</label>
-                            <input class="form__input" type="text" id="pages" name="pages">
+                            <input required placeholder="Enter the number of pages" class="form__input" type="number" id="pages" name="pages">
                         </li>
                         <li class="form__item">
-                            <label class="form__label" for="read">Have you read it?</label>
-                            <input type="checkbox" id="read" name="read" value="false">
+                            <p>Have you read this book?</p>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="read" name="read" value="true">
+                            <label class="form__label" for="read">Yes</label>
+                        </li>
+                        <li>
+                            <input type="checkbox" id="not-read" name="read" value="false">
+                            <label class="form__label" for="not-read">No</label>
                         </li>
                         <button class="form__button" type="submit">Submit</button>
                     </ul>               
