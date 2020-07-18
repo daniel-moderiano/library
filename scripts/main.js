@@ -16,6 +16,7 @@ function addBookToLibrary() {
         bookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, false);
     }
     myLibrary.push(bookEntry);
+    return bookEntry;
 }  
 
 // Initialise all document variables here
@@ -35,6 +36,7 @@ const form = document.querySelector(".form");
 const book = document.querySelector(".book");
 const bookshelf = document. querySelector('.library-container');
 
+
 // Listen for click on new book button, and activate function to display modal
 openModal = () => modal.style.display = "block";
 addNewBook.addEventListener("click", openModal);
@@ -52,9 +54,9 @@ function clickOutside(e) {
 
 window.addEventListener("click", clickOutside);
 
-// Function to take render the library array as HTML items (individual books)
+// Function to render the library array as HTML items (individual books)
 
-function render() {
+function createNewBook() {
     let parent = book;
     let children = book.childNodes;
     let newBook = book.cloneNode();
@@ -63,15 +65,27 @@ function render() {
         newBook.appendChild(childClone);
     })
     bookshelf.appendChild(newBook);
+    return newBook
+}
+
+function render(bookData, newBook) {
+    newBook.querySelector(".book__title").textContent = bookData.title;
+    newBook.querySelector(".book__author").textContent = bookData.author;
+    newBook.querySelector(".book__pages").textContent = bookData.pages;
+    if(bookData.read === true) {
+        newBook.querySelector(".book__read").textContent = "Yes";
+    } else {
+        newBook.querySelector(".book__read").textContent = "No";
+    }
+
 }
 
 // On click of submit button, call function to take user input and create new book object, then add this to library array
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
-    addBookToLibrary();
     closeModal();
-    render();
+    render(addBookToLibrary(), createNewBook());
 })
 
 
