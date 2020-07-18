@@ -8,17 +8,15 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-// function addBookToLibrary() {
-//     // Take user input and store new book objects into array
-//     let bookEntry;
-//     if(checkYes.checked) {
-//         bookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, true);
-//     } else {    
-//         bookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, false);
-//     }
-//     myLibrary.push(bookEntry);
-//     return bookEntry;
-// }  
+function addBookToLibrary() {
+    let bookEntry;
+    if(checkYes.checked) {
+        bookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, true);
+    } else {    
+        bookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, false);
+    }
+    myLibrary.push(bookEntry);
+}  
 
 // Initialise all document variables here
 
@@ -57,16 +55,8 @@ window.addEventListener("click", clickOutside);
 // submitBtn.addEventListener("click", addBookToLibrary);
 
 form.addEventListener("submit", function(e) {
-    e.preventDefault()
-    console.log("Form has been submitted")
-    // let bookEntry;
-    // if(checkYes.checked) {
-    //     bookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, true);
-    // } else {    
-    //     bookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, false);
-    // }
-    // myLibrary.push(bookEntry);
-    // return bookEntry;
-    console.log(titleInput.value);
+    e.preventDefault();
+    addBookToLibrary();
+    closeModal();
 })
 
