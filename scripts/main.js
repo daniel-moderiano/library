@@ -16,7 +16,7 @@ function addBookToLibrary() {
         bookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, false);
     }
     myLibrary.push(bookEntry);
-    return bookEntry;
+    return(bookEntry);
 }  
 
 // Initialise all document variables here
@@ -54,42 +54,7 @@ function clickOutside(e) {
 
 window.addEventListener("click", clickOutside);
 
-// Function to render the library array as HTML items (individual books)
-
-function createNewBook() {
-    let parent = book;
-    let children = book.childNodes;
-    let newBook = book.cloneNode();
-    children.forEach(function(child) {
-        let childClone = child.cloneNode();
-        newBook.appendChild(childClone);
-    })
-    bookshelf.appendChild(newBook);
-    return newBook
-}
-
-function render(bookData, newBook) {
-    newBook.querySelector(".book__title").textContent = bookData.title;
-    newBook.querySelector(".book__author").textContent = bookData.author;
-    newBook.querySelector(".book__pages").textContent = bookData.pages;
-    if(bookData.read === true) {
-        newBook.querySelector(".book__read").textContent = "Yes";
-    } else {
-        newBook.querySelector(".book__read").textContent = "No";
-    }
-
-}
-
-// On click of submit button, call function to take user input and create new book object, then add this to library array
-
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
-    closeModal();
-    render(addBookToLibrary(), createNewBook());
-})
-
-
-// Consider a function to actually render books in myLibrary array as HTML
+// Function to render the library array as HTML items (individual books) 
 
 function renderBook(book) {
     let bookDiv = document.createElement("div");
@@ -104,8 +69,38 @@ function renderBook(book) {
             bookDetails.textContent = book[property];
         }
         bookDetails.classList.add("book__property");
+        bookDetails.classList.add(`book__${property}`);
         bookDiv.appendChild(bookDetails);
     }
     bookshelf.appendChild(bookDiv);
 }
+
+
+// Initialise page load with render function applied to any books in library. Add example book for display testing.
+
+let lotr = new Book("The Lord of the Rings", "J.R.R. Tolkien", 423, true);
+myLibrary.push(lotr);
+
+window.addEventListener("load", renderLibrary);
+
+function renderLibrary() {
+    for(let i = 0; i < myLibrary.length; i++) {
+        renderBook(myLibrary[i]);
+    }
+}
+
+
+// On click of submit button, call function to take user input and create new book object, then add this to library array, then render as HTML
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+    closeModal();
+    let newBookEntry = addBookToLibrary();
+    renderBook(newBookEntry);
+})
+
+
+
+
+
 
