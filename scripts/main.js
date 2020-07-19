@@ -85,8 +85,6 @@ function renderBook(book) {
 let lotr = new Book("The Lord of the Rings", "J.R.R. Tolkien", 423, true);
 myLibrary.push(lotr);
 
-window.addEventListener("load", renderLibrary);
-
 function renderLibrary() {
     let bookTitleList = (Array.from(updatedBookList)).map(book => book.textContent);
     for(let i = 0; i < myLibrary.length; i++) {
@@ -98,7 +96,16 @@ function renderLibrary() {
     }
 }
 
+window.addEventListener("load", checkStored);
 
+function checkStored() {
+    if(!localStorage.getItem("myLibrary")) {
+        renderLibrary();
+    } else {
+        myLibrary = JSON.parse((localStorage.getItem("myLibrary")));
+        renderLibrary();
+    }
+}
 
 // On click of submit button, call function to take user input and create new book object, then add this to library array, then render as HTML
 
@@ -107,6 +114,7 @@ form.addEventListener("submit", function(e) {
     closeModal();
     addBookToLibrary();
     renderLibrary();
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 })
 
 
