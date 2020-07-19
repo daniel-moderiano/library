@@ -96,6 +96,8 @@ function renderLibrary() {
     }
 }
 
+// Function to check for stored libraries and load if present, else load default library
+
 window.addEventListener("load", checkStored);
 
 function checkStored() {
@@ -107,7 +109,7 @@ function checkStored() {
     }
 }
 
-// On click of submit button, call function to take user input and create new book object, then add this to library array, then render as HTML
+// On click of submit button, call function to take user input and create new book object, then add this to library array, then render as HTML. Add to storage as well.
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -117,6 +119,13 @@ form.addEventListener("submit", function(e) {
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 })
 
+// Clear storage button to enable testing
+
+const clearBtn = document.querySelector(".button--clear");
+
+clearBtn.addEventListener("click", () => {
+    localStorage.clear();
+});
 
 
 
