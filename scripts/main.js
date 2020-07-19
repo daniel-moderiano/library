@@ -89,3 +89,16 @@ form.addEventListener("submit", function(e) {
 })
 
 
+// Consider a function to actually render books in myLibrary array as HTML
+
+function renderBook(book) {
+    let bookDiv = document.createElement("div");
+    bookDiv.classList.add("book");
+    for(let property in book) {
+        let bookDetails = document.createElement("div");
+        bookDetails.textContent = book[property];
+        bookDiv.appendChild(bookDetails);
+    }
+    bookshelf.appendChild(bookDiv);
+}
+
