@@ -35,6 +35,9 @@ const formInputRadios = document.querySelectorAll(".form__radio");
 const form = document.querySelector(".form");
 const book = document.querySelector(".book");
 const bookshelf = document. querySelector('.library-container');
+let updatedBookList = document.getElementsByClassName('book__title');
+
+
 
 
 // Listen for click on new book button, and activate function to display modal
@@ -76,6 +79,7 @@ function renderBook(book) {
 }
 
 
+
 // Initialise page load with render function applied to any books in library. Add example book for display testing.
 
 let lotr = new Book("The Lord of the Rings", "J.R.R. Tolkien", 423, true);
@@ -84,10 +88,16 @@ myLibrary.push(lotr);
 window.addEventListener("load", renderLibrary);
 
 function renderLibrary() {
+    let bookTitleList = (Array.from(updatedBookList)).map(book => book.textContent);
     for(let i = 0; i < myLibrary.length; i++) {
-        renderBook(myLibrary[i]);
+        if(bookTitleList.includes(myLibrary[i].title)) {
+            // pass
+        } else {
+            renderBook(myLibrary[i]);
+        }
     }
 }
+
 
 
 // On click of submit button, call function to take user input and create new book object, then add this to library array, then render as HTML
@@ -95,8 +105,8 @@ function renderLibrary() {
 form.addEventListener("submit", function(e) {
     e.preventDefault();
     closeModal();
-    let newBookEntry = addBookToLibrary();
-    renderBook(newBookEntry);
+    addBookToLibrary();
+    renderLibrary();
 })
 
 
