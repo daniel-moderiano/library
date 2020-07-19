@@ -96,7 +96,14 @@ function renderBook(book) {
     bookDiv.classList.add("book");
     for(let property in book) {
         let bookDetails = document.createElement("div");
-        bookDetails.textContent = book[property];
+        if(property === "read" && book[property] === true) {
+            bookDetails.textContent = "Yes";
+        } else if(property === "read" && book[property] === false) {
+            bookDetails.textContent = "No"
+        } else {
+            bookDetails.textContent = book[property];
+        }
+        bookDetails.classList.add("book__property");
         bookDiv.appendChild(bookDetails);
     }
     bookshelf.appendChild(bookDiv);
