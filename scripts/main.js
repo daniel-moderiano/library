@@ -119,15 +119,4 @@ form.addEventListener("submit", function(e) {
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 })
 
-// Clear storage button to enable testing
-
-const clearBtn = document.querySelector(".button--clear");
-
-clearBtn.addEventListener("click", () => {
-    localStorage.clear();
-});
-
-
-
-
 

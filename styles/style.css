@@ -10,9 +10,10 @@ body {
 }
 
 main {
-    width: 70%;
-    margin: 0 auto;
-    height: 50%;
+    width: 90%;
+    margin: 4rem auto 0 auto;
+    /* height: 50%; */
+    background-color: #fff;
 }
 
 .header {
@@ -41,12 +42,24 @@ main {
 
 .library-container {
     width: 100%;
-    background-color: #fff;
     height: 100%;
     border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+}
+
+.library__headings {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-bottom: black 1px solid;
+}
+
+.book {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
 
 .modal {
@@ -60,7 +73,6 @@ main {
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.5);
 }
-
 
 .form-container {
     display: flex;
@@ -120,14 +132,3 @@ main {
     to{opacity: 1;}
 }
 
-.library__headings {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.book {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
