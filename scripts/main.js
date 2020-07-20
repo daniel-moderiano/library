@@ -61,7 +61,9 @@ window.addEventListener("click", clickOutside);
 
 function renderBook(book) {
     let bookDiv = document.createElement("div");
+    let bookId = myLibrary.findIndex(element => element.title === book.title);
     bookDiv.classList.add("book");
+    bookDiv.dataset.id = bookId;
     for(let property in book) {
         let bookDetails = document.createElement("div");
         if(property === "read" && book[property] === true) {
