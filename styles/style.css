@@ -1,11 +1,13 @@
 html {
     height: 100%;
+    
 }
 
 body {
     font-family: Arial, sans-serif;
     line-height: 1.5rem;   
-    background-color: rgba(51, 155, 196, 0.5);
+    background-image: linear-gradient(165deg, rgba(0, 60, 255, 0.7), rgba(79, 179, 245, 0.7), 
+    rgba(79, 240, 245, 0.7));
     height: 100%;
 }
 
@@ -15,6 +17,7 @@ main {
     /* height: 50%; */
     background-color: #fff;
     padding: 0 2rem 1rem 2rem;
+    box-shadow: 0px 7px 26px 0px rgba(0,0,0,0.5);
 }
 
 :focus {
@@ -22,14 +25,19 @@ main {
 }
 
 .header {
-    padding: 2rem 0 2rem 0;
+    margin: 0 0.5rem;
+    padding: 2rem 0;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+
 }
 
 .main-title {
-    font-size: 2rem;
-    font-weight: bold;
+    font-size: 3rem;
+    font-weight: normal;
+    padding-left: 1rem;
+    color: rgba(0, 60, 255, 0.7);
 }
 
 /* .button-container {
@@ -68,13 +76,13 @@ main {
     display: grid;
     grid-template-columns: 1.25fr 1fr 0.75fr 0.75fr;
     /* justify-items: center; */
-    border-bottom: 1px solid rgb(40, 64, 143);
+    border-bottom: 1px solid rgb(26, 0, 61);
     padding: 1rem 1rem 0.25rem 1rem;
     margin: 0.5rem;
 }
 
 .library__heading {
-    color: grey;
+    color: rgb(26, 0, 61);
     font-size: 1.05rem;
     font-weight: bold;
 }
@@ -82,10 +90,11 @@ main {
 .book {
     display: grid;
     grid-template-columns: 1.25fr 1fr 0.75fr 0.75fr;
-    padding: 1rem;
-    border: 1px solid grey;
+    padding: 0.25rem 1rem;
+    border-bottom: 1px solid rgb(117, 172, 255);
+    /* border-radius: 6px; */
     margin: 0.5rem;
-    /* box-shadow: 0px 0px 10px 2px rgb(211, 211, 211); */
+
 }
 
 .book__property {
