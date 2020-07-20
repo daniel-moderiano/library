@@ -10,10 +10,11 @@ body {
 }
 
 main {
-    width: 90%;
+    width: 80%;
     margin: 4rem auto 0 auto;
     /* height: 50%; */
     background-color: #fff;
+    padding: 0 2rem 1rem 2rem;
 }
 
 .header {
@@ -51,21 +52,21 @@ main {
 
 .library__headings {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
-    border: black 1px solid;
-    padding: 1rem;
+    grid-template-columns: 1.25fr 1fr 0.75fr 1fr;
+    /* justify-items: center; */
+    border-bottom: 1px solid rgb(40, 64, 143);
+    padding: 1rem 1rem 0.25rem 1rem;
     margin: 0.5rem;
 }
 
 .library__heading {
-    
+    color: grey;
+    font-size: 1.05rem;
 }
 
 .book {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    justify-items: center;
+    grid-template-columns: 1.25fr 1fr 0.75fr 1fr;
     padding: 1rem;
     border: 1px solid grey;
     margin: 0.5rem;
@@ -73,7 +74,7 @@ main {
 }
 
 .book__property {
-    
+    font-size: 0.9rem;
 }
 
 .modal {
