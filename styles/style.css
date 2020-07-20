@@ -17,9 +17,14 @@ main {
     padding: 0 2rem 1rem 2rem;
 }
 
+:focus {
+    outline: none;
+}
+
 .header {
     padding: 2rem 0 2rem 0;
-    text-align: center;
+    display: flex;
+    align-items: center;
 }
 
 .main-title {
@@ -27,19 +32,28 @@ main {
     font-weight: bold;
 }
 
-.button-container {
+/* .button-container {
     display: flex;
     align-items: center;
     justify-content: flex-end;
-}
+} */
 
 .button--new {
-    border: 1 px solid black;
+    border: 1px solid rgba(30, 74, 196, 0.7);
+    border-radius: 2px;
     padding: 0.5rem;
-    background-color: rgb(120, 155, 253);
-    width: 10rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    color: rgba(30, 74, 196, 0.7);
+    background-color: white;
 }
+
+.button--new:hover, .button--new:focus {
+    background-color: rgba(30, 74, 196, 0.7);
+    color: white;
+    border: 1px solid rgba(30, 74, 196, 0);
+    border-radius: 2px;
+}
+
 
 .library-container {
     width: 100%;
@@ -52,7 +66,7 @@ main {
 
 .library__headings {
     display: grid;
-    grid-template-columns: 1.25fr 1fr 0.75fr 1fr;
+    grid-template-columns: 1.25fr 1fr 0.75fr 0.75fr;
     /* justify-items: center; */
     border-bottom: 1px solid rgb(40, 64, 143);
     padding: 1rem 1rem 0.25rem 1rem;
@@ -62,11 +76,12 @@ main {
 .library__heading {
     color: grey;
     font-size: 1.05rem;
+    font-weight: bold;
 }
 
 .book {
     display: grid;
-    grid-template-columns: 1.25fr 1fr 0.75fr 1fr;
+    grid-template-columns: 1.25fr 1fr 0.75fr 0.75fr;
     padding: 1rem;
     border: 1px solid grey;
     margin: 0.5rem;
