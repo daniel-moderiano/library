@@ -52,19 +52,20 @@ main {
 .library__headings {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
     border: black 1px solid;
     padding: 1rem;
     margin: 0.5rem;
 }
 
 .library__heading {
-    border: 1px solid black;
+    
 }
 
 .book {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    justify-content: space-evenly;
+    justify-items: center;
     padding: 1rem;
     border: 1px solid grey;
     margin: 0.5rem;
@@ -72,7 +73,7 @@ main {
 }
 
 .book__property {
-    border: 1px solid grey;
+    
 }
 
 .modal {
