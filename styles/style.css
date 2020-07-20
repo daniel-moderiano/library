@@ -50,16 +50,29 @@ main {
 }
 
 .library__headings {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    border-bottom: black 1px solid;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: black 1px solid;
+    padding: 1rem;
+    margin: 0.5rem;
+}
+
+.library__heading {
+    border: 1px solid black;
 }
 
 .book {
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     justify-content: space-evenly;
+    padding: 1rem;
+    border: 1px solid grey;
+    margin: 0.5rem;
+    /* box-shadow: 0px 0px 10px 2px rgb(211, 211, 211); */
+}
+
+.book__property {
+    border: 1px solid grey;
 }
 
 .modal {
