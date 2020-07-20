@@ -4,20 +4,21 @@ html {
 }
 
 body {
-    font-family: Arial, sans-serif;
+    
+    font-family: "Lato", sans-serif;
     line-height: 1.5rem;   
-    background-image: linear-gradient(165deg, rgba(0, 60, 255, 0.7), rgba(79, 179, 245, 0.7), 
-    rgba(79, 240, 245, 0.7));
     height: 100%;
+    background-color: rgb(240, 240, 240);
 }
 
 main {
-    width: 80%;
+    width: 60%;
+    min-width: 40rem;
     margin: 4rem auto 0 auto;
     /* height: 50%; */
     background-color: #fff;
     padding: 0 2rem 1rem 2rem;
-    box-shadow: 0px 7px 26px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 7px 26px 0px rgba(0,0,0,0.2);
 }
 
 :focus {
@@ -35,9 +36,11 @@ main {
 
 .main-title {
     font-size: 3rem;
-    font-weight: normal;
+    font-weight: bold;
     padding-left: 1rem;
-    color: rgba(0, 60, 255, 0.7);
+    color: rgb(0, 61, 122);
+    font-family: "Open Sans", sans-serif;
+    padding-bottom: 0.6rem;
 }
 
 /* .button-container {
@@ -47,18 +50,19 @@ main {
 } */
 
 .button--new {
-    border: 1px solid rgba(30, 74, 196, 0.7);
+    border: 1px solid rgb(0, 77, 155);
     border-radius: 2px;
-    padding: 0.5rem;
+    padding: 0.4rem 0.5rem 0.5rem 0.5rem;
     font-size: 1rem;
-    color: rgba(30, 74, 196, 0.7);
+    color: rgb(0, 77, 155);
     background-color: white;
+    font-family: "Open Sans", sans-serif;
 }
 
 .button--new:hover, .button--new:focus {
-    background-color: rgba(30, 74, 196, 0.7);
+    background-color: rgb(0, 77, 155);
     color: white;
-    border: 1px solid rgba(30, 74, 196, 0);
+    border: 1px solid rgb(0, 77, 155);
     border-radius: 2px;
 }
 
@@ -76,13 +80,13 @@ main {
     display: grid;
     grid-template-columns: 1.25fr 1fr 0.75fr 0.75fr;
     /* justify-items: center; */
-    border-bottom: 1px solid rgb(26, 0, 61);
+    border-bottom: 1px solid rgb(0, 77, 155);
     padding: 1rem 1rem 0.25rem 1rem;
     margin: 0.5rem;
 }
 
 .library__heading {
-    color: rgb(26, 0, 61);
+    color: rgb(0, 77, 155);
     font-size: 1.05rem;
     font-weight: bold;
 }
@@ -91,7 +95,7 @@ main {
     display: grid;
     grid-template-columns: 1.25fr 1fr 0.75fr 0.75fr;
     padding: 0.25rem 1rem;
-    border-bottom: 1px solid rgb(117, 172, 255);
+    border-bottom: 1px solid rgba(0, 77, 155, 0.2);
     /* border-radius: 6px; */
     margin: 0.5rem;
 
