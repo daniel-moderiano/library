@@ -131,20 +131,26 @@ main {
 .form-container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding-bottom: 1rem;
+    align-items: flex-start;
+    padding: 2rem;
     background-color: #f4f4f4;
     margin: 20% auto;
-    width: 50%;
+    width: 30rem;
     box-shadow: 0 5px 8px 0 rgba(0, 0, 0, 0.2), 0 7px 20px 0 rgba(0, 0, 0, 0.17);
     animation-name: modal-open;
     animation-duration: 0.6s;
 }
 
-.form__header {
-    background-color: coral;
+.form {
     width: 100%;
-    margin-bottom: 1rem;
+    
+}
+
+.form__header {
+    width: 100%;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgb(0, 77, 155);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -163,22 +169,59 @@ main {
 }
 
 .form__title {
-    font-size: 1.5rem;
+    font-size: 1.75rem;
     font-weight: bold;
-    padding-left: 8rem;
+    color: rgb(0, 61, 122);
 }
 
 .form__item {
     padding-bottom: 0.75rem;
 }
 
+.form__label {
+    font-size: 1.15rem;
+}
+
+
 .form__input {
     display: block;
-    width: 15rem;
+    height: 2.5rem;
+    font-family: "Lato", sans-serif;
+    font-size: 1rem;
+    margin: 0.5rem 0 0.25rem 0;
+    width: 100%;
+    padding-left: 0.5rem;
+    box-sizing: border-box;
+}
+
+.form__radio--list {
+    padding-top: 0.5rem;
+}
+
+.form__radio {
+    margin: 0 0.25rem 0 0;
+    
 }
 
 .form__submit {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
+}
+
+.form__submit {
+    border: 1px solid rgb(0, 77, 155);
+    border-radius: 2px;
+    padding: 0.4rem 0.5rem 0.5rem 0.5rem;
+    font-size: 1.15rem;
+    color: rgb(0, 77, 155);
+    background-color: #f4f4f4;
+    font-family: "Open Sans", sans-serif;
+}
+
+.form__submit:hover, .form__submit:focus {
+    background-color: rgb(0, 77, 155);
+    color: white;
+    border: 1px solid rgb(0, 77, 155);
+    border-radius: 2px;
 }
 
 @keyframes modal-open{
