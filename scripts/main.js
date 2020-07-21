@@ -85,6 +85,7 @@ function renderBook(book, index) {
         bookDiv.appendChild(bookDetails);
     }
     bookDiv.appendChild(deleteBtn);
+    addBookDeleteEvent(deleteBtn);
     bookshelf.appendChild(bookDiv);
 }
 
@@ -98,6 +99,8 @@ function renderBook(book, index) {
 
 let lotr = new Book("The Lord of the Rings", "J.R.R. Tolkien", 423, true);
 myLibrary.push(lotr);
+addBookDeleteEvent(deleteBookBtn)
+
 
 function renderLibrary() {
     // This variable identifies all of the current bookDivs displayed in the library. 
@@ -142,12 +145,14 @@ form.addEventListener("submit", function(e) {
 
 // Function to listen for click of delete icon and then call function to delete the book from myLibary, then delete from HTML
 
+function addBookDeleteEvent(node) {
+    node.addEventListener("click", function(e) {
+        let bookToRemove = e.target.parentNode;
+        myLibrary.splice(parseInt(bookToRemove.dataset.id), 1);
+        renderLibrary();
+    });
+}
 
-deleteBookBtn.addEventListener("click", function(e) {
-    let bookToRemove = e.target.parentNode;
-    myLibrary.splice(parseInt(bookToRemove.dataset.id), 1);
-    renderLibrary();
-});
 
 function deleteBooks() {
     // let bookTitleList = (Array.from(updatedBookList)).map(book => book.textContent);
