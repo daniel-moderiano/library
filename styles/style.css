@@ -103,7 +103,7 @@ main {
     font-size: 0.9rem;
 }
 
-/* .book__delete {
+.book__delete {
     font-size: 1.25rem;
     color: rgb(211, 0, 0);
     justify-self: right;
@@ -114,7 +114,7 @@ main {
     text-decoration: none;
     font-size: 1.5rem;
     font-weight: bold;
-} */
+}
 
 .modal {
     display: none;

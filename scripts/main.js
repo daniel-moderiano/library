@@ -1,3 +1,6 @@
+// TODO: read status toggle button
+// TODO: Make the delete function actually work, check the splice function or consider leaving an empty slot in the library array? Consider adding a line to the render library function to append the data value ot the new book as it iterates through the array - this might allow dynamic updating with addition/removal of books??
+
 let myLibrary = []
 
 function Book(title, author, pages, read) {
@@ -34,7 +37,9 @@ const formInputFields = document.querySelectorAll(".form__input");
 const formInputRadios = document.querySelectorAll(".form__radio");
 const form = document.querySelector(".form");
 const book = document.querySelector(".book");
+const allBooks = document.getElementsByClassName("book");
 const bookshelf = document. querySelector('.library-container');
+const deleteBookBtn = document.querySelector(".book__delete");
 let updatedBookList = document.getElementsByClassName('book__title');
 
 
@@ -59,11 +64,13 @@ window.addEventListener("click", clickOutside);
 
 // Function to render the library array as HTML items (individual books) 
 
-function renderBook(book) {
+function renderBook(book, index) {
     let bookDiv = document.createElement("div");
-    let bookId = myLibrary.findIndex(element => element.title === book.title);
+    let deleteBtn = document.createElement("span");
+    deleteBtn.classList.add("book__delete");
+    deleteBtn.innerHTML = "&times;";
     bookDiv.classList.add("book");
-    bookDiv.dataset.id = bookId;
+    bookDiv.dataset.id = index;
     for(let property in book) {
         let bookDetails = document.createElement("div");
         if(property === "read" && book[property] === true) {
@@ -77,6 +84,7 @@ function renderBook(book) {
         bookDetails.classList.add(`book__${property}`);
         bookDiv.appendChild(bookDetails);
     }
+    bookDiv.appendChild(deleteBtn);
     bookshelf.appendChild(bookDiv);
 }
 
@@ -84,18 +92,27 @@ function renderBook(book) {
 
 // Initialise page load with render function applied to any books in library. Add example book for display testing.
 
+"If the book is in mylibrary but no bookDiv exists, then renderBook"
+"If the book is in myLibrary and the corresponding bookDiv exists, then do nothing"
+"If the book is not in myLibrary the corresponding bookDiv still exists, remove the bookDiv"
+
 let lotr = new Book("The Lord of the Rings", "J.R.R. Tolkien", 423, true);
 myLibrary.push(lotr);
 
 function renderLibrary() {
+    // This variable identifies all of the current bookDivs displayed in the library. 
     let bookTitleList = (Array.from(updatedBookList)).map(book => book.textContent);
+    
     for(let i = 0; i < myLibrary.length; i++) {
+        // Check if the current book in myLibrary has a bookDiv. If yes, do nothing. If not, render the book
         if(bookTitleList.includes(myLibrary[i].title)) {
             // pass
         } else {
-            renderBook(myLibrary[i]);
+            renderBook(myLibrary[i], i);
         }
     }
+    // Once all revelant books are rendered, iterate through the bookDivs to identify any divs to be deleted. 
+    
 }
 
 // Function to check for stored libraries and load if present, else load default library
@@ -122,3 +139,24 @@ form.addEventListener("submit", function(e) {
 })
 
 
+// Function to listen for click of delete icon and then call function to delete the book from myLibary, then delete from HTML
+
+
+deleteBookBtn.addEventListener("click", function(e) {
+    let bookToRemove = e.target.parentNode;
+    myLibrary.splice(parseInt(bookToRemove.dataset.id), 1);
+    bookToRemove.remove();
+});
+
+function deleteBook() {
+    // let bookTitleList = (Array.from(updatedBookList)).map(book => book.textContent);
+    let currentDisplayedBooks = Array.from(allBooks);
+    let myLibraryTitles = myLibrary.map(book => book.title)
+    for(let i = 0; i < currentDisplayedBooks.length; i++) {
+        if(myLibraryTitles.includes(currentDisplayedBooks[i].firstElementChild.textContent)) {
+            // pass
+        } else {
+            currentDisplayedBooks[i].remove();
+        }
+    } 
+}
