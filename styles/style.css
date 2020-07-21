@@ -116,6 +116,18 @@ main {
     font-weight: bold;
 }
 
+.book__readStatus {
+    background-color: #fff;
+    color: rgb(0, 77, 155);
+    border: 1px solid rgb(0, 77, 155);
+}
+
+.book__readStatus--selected {
+    background-color: rgb(0, 77, 155);
+    color: #fff;
+    border: 1px solid rgb(0, 77, 155);
+}
+
 .modal {
     display: none;
     position: fixed;
@@ -223,6 +235,8 @@ main {
     border: 1px solid rgb(0, 77, 155);
     border-radius: 2px;
 }
+
+
 
 @keyframes modal-open{
     from{opacity: 0;}

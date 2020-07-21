@@ -101,10 +101,6 @@ function renderBook(book, index) {
 
 // Initialise page load with render function applied to any books in library. Add example book for display testing.
 
-"If the book is in mylibrary but no bookDiv exists, then renderBook"
-"If the book is in myLibrary and the corresponding bookDiv exists, then do nothing"
-"If the book is not in myLibrary the corresponding bookDiv still exists, remove the bookDiv"
-
 let lotr = new Book("The Lord of the Rings", "J.R.R. Tolkien", 423, true);
 myLibrary.push(lotr);
 addBookDeleteEvent(deleteBookBtn)
@@ -174,3 +170,5 @@ function deleteBooks() {
     } 
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
+
+// Need to implement a choice of yes/no that the user can select on the book listing in the library display
