@@ -13,6 +13,14 @@ function Book(title, author, pages, read) {
 
 function addBookToLibrary() {
     let bookEntry;
+    for(let i = 0; i < myLibrary.length; i++) {
+        if(myLibrary[i].title === titleInput.value && myLibrary[i].author === authorInput.value && myLibrary[i].pages === pagesInput.value) {
+            alert("This book entry already exists!");
+            return false;
+        } else {
+            // pass
+        }
+    }
     if(checkYes.checked) {
         bookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, true);
     } else {    
@@ -41,7 +49,6 @@ const allBooks = document.getElementsByClassName("book");
 const bookshelf = document. querySelector('.library-container');
 const deleteBookBtn = document.querySelector(".book__delete");
 let updatedBookList = document.getElementsByClassName('book__title');
-
 
 
 
@@ -104,7 +111,6 @@ addBookDeleteEvent(deleteBookBtn)
 
 function renderLibrary() {
     // This variable identifies all of the current bookDivs displayed in the library. 
-    // let bookTitleList = (Array.from(updatedBookList)).map(book => book.textContent);
     let currentDisplayedBookTitles = (Array.from(allBooks)).map(book => book.firstElementChild.textContent);
     for(let i = 0; i < myLibrary.length; i++) {
         // Check if the current book in myLibrary has a bookDiv. If yes, do nothing. If not, render the book
@@ -143,7 +149,7 @@ form.addEventListener("submit", function(e) {
 })
 
 
-// Function to listen for click of delete icon and then call function to delete the book from myLibary, then delete from HTML
+// Function to listen for click of delete icon and then call function to delete the book from myLibary, then call render library with added function to delete books no longer in library array
 
 function addBookDeleteEvent(node) {
     node.addEventListener("click", function(e) {
@@ -165,4 +171,5 @@ function deleteBooks() {
             currentDisplayedBooks[i].remove();
         }
     } 
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
