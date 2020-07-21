@@ -116,13 +116,26 @@ main {
     font-weight: bold;
 }
 
-.book__readStatus {
+.book__read-status--yes {
     background-color: #fff;
     color: rgb(0, 77, 155);
     border: 1px solid rgb(0, 77, 155);
+    border-radius: 0;
+    margin: 0;
 }
 
-.book__readStatus--selected {
+.book__read-status--no {
+    background-color: #fff;
+    color: rgb(0, 77, 155);
+    border-top: 1px solid rgb(0, 77, 155);
+    border-right: 1px solid rgb(0, 77, 155);
+    border-bottom: 1px solid rgb(0, 77, 155);
+    border-left: none;
+    border-radius: 0;
+    margin: 0;
+}
+
+.book__read-status--selected {
     background-color: rgb(0, 77, 155);
     color: #fff;
     border: 1px solid rgb(0, 77, 155);
