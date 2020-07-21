@@ -14,7 +14,7 @@ function Book(title, author, pages, read) {
 function addBookToLibrary() {
     let bookEntry;
     for(let i = 0; i < myLibrary.length; i++) {
-        if(myLibrary[i].title === titleInput.value && myLibrary[i].author === authorInput.value && myLibrary[i].pages === pagesInput.value) {
+        if(myLibrary[i].title === titleInput.value) {
             alert("This book entry already exists!");
             return false;
         } else {
@@ -27,6 +27,7 @@ function addBookToLibrary() {
         bookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, false);
     }
     myLibrary.push(bookEntry);
+    console.log(myLibrary.indexOf(bookEntry));
     return(bookEntry);
 }  
 
