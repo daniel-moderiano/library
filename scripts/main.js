@@ -101,18 +101,19 @@ myLibrary.push(lotr);
 
 function renderLibrary() {
     // This variable identifies all of the current bookDivs displayed in the library. 
-    let bookTitleList = (Array.from(updatedBookList)).map(book => book.textContent);
-    
+    // let bookTitleList = (Array.from(updatedBookList)).map(book => book.textContent);
+    let currentDisplayedBookTitles = (Array.from(allBooks)).map(book => book.firstElementChild.textContent);
     for(let i = 0; i < myLibrary.length; i++) {
         // Check if the current book in myLibrary has a bookDiv. If yes, do nothing. If not, render the book
-        if(bookTitleList.includes(myLibrary[i].title)) {
-            // pass
+        if(currentDisplayedBookTitles.includes(myLibrary[i].title)) {
+            let bookmark = currentDisplayedBookTitles.indexOf(myLibrary[i].title)
+            allBooks[bookmark].dataset.id = i;
         } else {
             renderBook(myLibrary[i], i);
         }
     }
     // Once all revelant books are rendered, iterate through the bookDivs to identify any divs to be deleted. 
-    
+    deleteBooks();
 }
 
 // Function to check for stored libraries and load if present, else load default library
@@ -145,10 +146,10 @@ form.addEventListener("submit", function(e) {
 deleteBookBtn.addEventListener("click", function(e) {
     let bookToRemove = e.target.parentNode;
     myLibrary.splice(parseInt(bookToRemove.dataset.id), 1);
-    bookToRemove.remove();
+    renderLibrary();
 });
 
-function deleteBook() {
+function deleteBooks() {
     // let bookTitleList = (Array.from(updatedBookList)).map(book => book.textContent);
     let currentDisplayedBooks = Array.from(allBooks);
     let myLibraryTitles = myLibrary.map(book => book.title)
