@@ -118,8 +118,6 @@ function renderBook(book, index) {
 
 let lotr = new Book("The Lord of the Rings", "J.R.R. Tolkien", 423, true);
 myLibrary.push(lotr);
-addBookDeleteEvent(deleteBookBtn)
-
 
 function renderLibrary() {
     // This variable identifies all of the current bookDivs displayed in the library. 
