@@ -157,6 +157,12 @@ form.addEventListener("submit", function(e) {
     addBookToLibrary();
     renderLibrary();
     localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+    Array.from(formInputFields).forEach(function(inputField) {
+        inputField.value = "";
+    })
+    Array.from(formInputRadios).forEach(function(radio) {
+        radio.checked = false;
+    })
 })
 
 
