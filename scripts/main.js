@@ -107,6 +107,8 @@ function renderBook(book, index) {
 
     bookDiv.appendChild(deleteBtn);
     addBookDeleteEvent(deleteBtn);
+    addReadStatusEvent(readStatusBtnYes);
+    addReadStatusEvent(readStatusBtnNo);
     bookshelf.appendChild(bookDiv);
 }
 
@@ -186,3 +188,25 @@ function deleteBooks() {
 }
 
 // Need to implement a choice of yes/no that the user can select on the book listing in the library display
+
+
+function addReadStatusEvent(node) {
+    node.addEventListener("click", function(e) {     
+        changeReadStatus(e.target, e.target.parentNode, e.target.textContent);
+    });
+}
+
+function changeReadStatus(target, parent, btnPressed) {
+    let bookId = (parent.parentNode).dataset.id;
+    if(btnPressed === "Yes") {
+        target.classList.toggle("book__read-status--selected")
+        target.nextSibling.classList.toggle("book__read-status--selected");
+        parent.classList.toggle("book__read--yes");
+        myLibrary[bookId].read = true;
+    } else {
+        parent.classList.toggle("book__read--no");
+        target.classList.toggle("book__read-status--selected");
+        target.previousSibling.classList.toggle("book__read-status--selected");
+        myLibrary[bookId].read = false;
+    }
+}
