@@ -209,4 +209,5 @@ function changeReadStatus(target, parent, btnPressed) {
         target.previousSibling.classList.toggle("book__read-status--selected");
         myLibrary[bookId].read = false;
     }
+    localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
 }
