@@ -80,10 +80,8 @@ function renderBook(book, index) {
     for(let property in book) {
         let bookDetails = document.createElement("div");
         if(property === "read" && book[property] === true) {
-            bookDetails.textContent = "Yes";
             bookDetails.classList.add("book__read--yes");
         } else if(property === "read" && book[property] === false) {
-            bookDetails.textContent = "No"
             bookDetails.classList.add("book__read--no");
         } else {
             bookDetails.textContent = book[property];
@@ -101,7 +99,7 @@ function renderBook(book, index) {
     readStatusBtnNo.classList.add("book__read-status");
     readStatusBtnNo.classList.add("book__read-status--no"); 
     readStatusBtnNo.textContent = "No";
-    if(readStatusDiv.classList.contains("Yes")) {
+    if(readStatusDiv.classList.contains("book__read--yes")) {
         readStatusBtnYes.classList.add("book__read-status--selected");
     } else {
         readStatusBtnNo.classList.add("book__read-status--selected");
