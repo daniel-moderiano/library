@@ -1,6 +1,3 @@
-// TODO: read status toggle button
-// TODO: Make the delete function actually work, check the splice function or consider leaving an empty slot in the library array? Consider adding a line to the render library function to append the data value ot the new book as it iterates through the array - this might allow dynamic updating with addition/removal of books??
-
 let myLibrary = []
 
 function Book(title, author, pages, read) {
@@ -14,7 +11,7 @@ function Book(title, author, pages, read) {
 function addBookToLibrary() {
     let bookEntry;
     for(let i = 0; i < myLibrary.length; i++) {
-        if(myLibrary[i].title === titleInput.value) {
+        if(myLibrary[i].title === titleInput.value && myLibrary[i].author === authorInput.value) {
             alert("This book entry already exists!");
             return false;
         } else {
@@ -27,7 +24,6 @@ function addBookToLibrary() {
         bookEntry = new Book(titleInput.value, authorInput.value, pagesInput.value, false);
     }
     myLibrary.push(bookEntry);
-    console.log(myLibrary.indexOf(bookEntry));
     return(bookEntry);
 }  
 
@@ -75,6 +71,8 @@ window.addEventListener("click", clickOutside);
 function renderBook(book, index) {
     let bookDiv = document.createElement("div");
     let deleteBtn = document.createElement("span");
+    let readStatusBtnYes = document.createElement("button");
+    let readStatusBtnNo = document.createElement("button");
     deleteBtn.classList.add("book__delete");
     deleteBtn.innerHTML = "&times;";
     bookDiv.classList.add("book");
@@ -83,8 +81,10 @@ function renderBook(book, index) {
         let bookDetails = document.createElement("div");
         if(property === "read" && book[property] === true) {
             bookDetails.textContent = "Yes";
+            bookDetails.classList.add("book__read--yes");
         } else if(property === "read" && book[property] === false) {
             bookDetails.textContent = "No"
+            bookDetails.classList.add("book__read--no");
         } else {
             bookDetails.textContent = book[property];
         }
@@ -92,6 +92,21 @@ function renderBook(book, index) {
         bookDetails.classList.add(`book__${property}`);
         bookDiv.appendChild(bookDetails);
     }
+    let readStatusDiv = bookDiv.querySelector(".book__read");
+    readStatusDiv.appendChild(readStatusBtnYes);
+    readStatusBtnYes.textContent = "Yes";
+    readStatusBtnYes.classList.add("book__read-status");
+    readStatusBtnYes.classList.add("book__read-status--yes"); 
+    readStatusDiv.appendChild(readStatusBtnNo);
+    readStatusBtnNo.classList.add("book__read-status");
+    readStatusBtnNo.classList.add("book__read-status--no"); 
+    readStatusBtnNo.textContent = "No";
+    if(readStatusDiv.classList.contains("Yes")) {
+        readStatusBtnYes.classList.add("book__read-status--selected");
+    } else {
+        readStatusBtnNo.classList.add("book__read-status--selected");
+    }
+
     bookDiv.appendChild(deleteBtn);
     addBookDeleteEvent(deleteBtn);
     bookshelf.appendChild(bookDiv);
@@ -109,9 +124,10 @@ addBookDeleteEvent(deleteBookBtn)
 function renderLibrary() {
     // This variable identifies all of the current bookDivs displayed in the library. 
     let currentDisplayedBookTitles = (Array.from(allBooks)).map(book => book.firstElementChild.textContent);
+    let currentDisplayedBookAuthors = (Array.from(allBooks)).map(book => book.querySelector(".book__author").textContent);
     for(let i = 0; i < myLibrary.length; i++) {
         // Check if the current book in myLibrary has a bookDiv. If yes, do nothing. If not, render the book
-        if(currentDisplayedBookTitles.includes(myLibrary[i].title)) {
+        if(currentDisplayedBookTitles.includes(myLibrary[i].title) && currentDisplayedBookAuthors.includes(myLibrary[i].author)) {
             let bookmark = currentDisplayedBookTitles.indexOf(myLibrary[i].title)
             allBooks[bookmark].dataset.id = i;
         } else {
